@@ -1,0 +1,30 @@
+<h2>transportation scheduling </h2>
+<!-- לעבור על הימים ובעבור כל אחד להראות את מה שהפונקציה מחזירה -->
+<table class="table table-sm">
+    <thead>
+        <tr>
+        <th *ngFor="let day of _scheduling?.favoriteVolunteers;let i=index" scope="col-4">
+        <p>{{daysOfWeek[i]}}</p>
+        </th>
+        </tr>
+    </thead>
+    <tbody >
+        <tr>
+            
+            <td *ngFor="let day of daysOfWeek;let i=index">
+                <form [formGroup]="daysForm">
+                
+                <select name="vday" id="dayId" formControlName="{{day}}"  [ngClass]="{ 'selected-day': daysForm.get(day)?.value>0}">
+                    <option *ngFor="let v of this.volunteersForDay(i)" [value]=v.id  >{{v.firstName}} </option>
+                </select>
+            </form>
+            </td>
+        
+        </tr>
+        <tr scope="row-4">
+        </tr>
+    </tbody>
+
+
+</table>
+<button class="btn btn-primary" (click)="saveScheduling()">Save  scheduling</button>

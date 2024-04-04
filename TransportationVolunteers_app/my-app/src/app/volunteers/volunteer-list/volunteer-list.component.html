@@ -1,0 +1,35 @@
+<h2>volunteer-list</h2>
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <div class="row">
+        <div class="col-1">
+            <span><b>Id</b></span>
+        </div>
+        <div class="col-3">
+            <span><b>Name</b></span>
+        </div>
+        <div class="col-2">
+            <span><b>Places</b></span>
+        </div>
+        </div>
+    </li>
+    <li *ngFor="let volunteer of volunteerLIST"  class="list-group-item" >
+    <div class="row">
+        <div class="col-1">
+            <span >{{volunteer.id}}</span>
+        </div>
+        <div class="col-3">
+            <span>{{volunteer.firstName}}  {{volunteer.lastName}}</span>
+        </div>
+        <div class="col-2">
+            <span>{{volunteer.numOfPlaces}}</span>
+        </div>
+        <div class="col-2">
+            <button class="btn btn-primary" (click)="navigateToDetails(volunteer)">Edit</button>
+          </div>
+    </div>
+    </li>
+</ul>
+
+<!-- <app-volunteer-details (onSaveVolunteer)="updateVolunteer($event.id,$event)"></app-volunteer-details> -->

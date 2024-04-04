@@ -1,0 +1,39 @@
+<p>volunteer-details works!</p>
+selectedVolunteer from volunteer-list: {{volunteer| json}}
+selectedVolunteer from volunteerForm:{{volunteerForm.value|json}}
+<div class="card" *ngIf="volunteer else noSelected">
+    <div class="card-header">
+        {{volunteer.id}}:{{volunteer.firstName}} {{volunteer.lastName}}
+    </div>
+    <div class="card-body">
+        <form [formGroup]="volunteerForm">
+            
+            <div class="formGroup">
+                <label for="firstName1">First Name:</label>
+                <input id="firstName1" class="form-control" type="text" name="name1" [value]="volunteer.firstName" formControlName="firstName"/>
+                
+            </div>
+            <div class="form-group">
+                <label for="volunteerlastname">Last Name:</label>
+                <input id="volunteerlastname" class="form-control" type="text" name="name2" [value]="volunteer.lastName" formControlName="lastName"/>
+            </div>
+            <div class="form-group">
+                <label for="volunteerplaces">Places:</label>
+                <input id="volunteerplaces" class="form-control" type="number" name="place" formControlName="numOfPlaces"/>
+            </div>
+            <div class="form-group">
+                <label for="volunteerdays">Choose volunteer days:</label>
+                <div *ngFor="let d of volunteer.chosenDays;let i=index">
+                    <input  id="volunteerdays{{i}}" formControlName="chosenDays{{i}}"  type="checkbox" [checked]="d === true" name="cDay" [value]="volunteerForm.controls['chosenDays[i]']" />{{daysOfWeek[i]}}
+                </div>
+                
+            </div> 
+        </form>
+    </div>
+    <button class="btn btn-primary" (click)="saveVolunteer()">Save  Volunteer</button>
+</div>
+<ng-template #noSelected>
+    <div>
+        No Card Selected
+    </div>
+</ng-template> 
