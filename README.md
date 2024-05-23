@@ -1,2 +1,3 @@
 # Angular_project
-Volunteer placement system for transportation/Angular project
+A system for placing volunteers and registering for a transportation system
+Angular project with connecting to .net core server
