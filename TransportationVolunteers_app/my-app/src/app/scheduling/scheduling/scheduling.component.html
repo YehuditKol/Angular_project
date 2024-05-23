@@ -15,7 +15,7 @@
                 <form [formGroup]="daysForm">
                 
                 <select name="vday" id="dayId" formControlName="{{day}}"  [ngClass]="{ 'selected-day': daysForm.get(day)?.value>0}">
-                    <option *ngFor="let v of this.volunteersForDay(i)" [value]=v.id  >{{v.firstName}} </option>
+                    <option *ngFor="let v of this.volunteersForDay(i)" [value]=v.id  >{{v.firstName}} {{v.lastName}}</option>
                 </select>
             </form>
             </td>
